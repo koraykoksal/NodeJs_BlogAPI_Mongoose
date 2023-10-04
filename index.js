@@ -16,6 +16,7 @@ const PORT = process.env.PORT || 8000
 
 /* ------------------------------------------------------- */
 
+//! expresse json veri göndereceğim ve bu verileri obje olarak almak için express.json() çalıştırıyorum.
 app.use(express.json())
 
 app.all('/', (req, res) => {
