@@ -24,11 +24,14 @@ app.use(express.json())
 require('./src/dbConnection')
 
 
-app.all('/', (req, res) => {
-    res.send('WELCOME TO BLOG API')
-})
+// app.all('/', (req, res) => {
+//     res.send('WELCOME TO BLOG API')
+// })
 
-
+//! Routers
+//? url adresine /blog ile bir istek atıldığında app.use çalıştır
+// app.use('/blog',require('./src/routers/blogRouter'))
+app.use(require('./src/routers/blogRouter'))
 
 
 //! errorHandler
