@@ -29,7 +29,13 @@ module.exports.BlogPost={
     },
 
     update: async (req, res) => {
-        
+        // güncelleme yapmak için req.params.postId bilgini ve req.body bilgisini belirtmek gerekir
+        const data = await BlogPost.updateOne({_id:req.params.postId},req.body)
+        res.status(202).send({
+            error:false,
+            body:req.body,
+            result:data
+        })
     },
 
     delete: async (req, res) => {
