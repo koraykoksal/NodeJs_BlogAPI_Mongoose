@@ -1,7 +1,13 @@
 "use strict"
 
+// Catch async-errors and send to errorHandler:
+require('express-async-errors')
+
 
 const User = require('../models/userModel')
+
+const passwordEncrypt = require('../helper/passwordEncrypt')
+
 
 module.exports.User={
 
@@ -48,5 +54,20 @@ module.exports.User={
 
         res.sendStatus( (data.deletedCount >= 1) ? 204 : 404 )
     },
+    login:async(req,res)=>{
+        const {email,password} = req.body
+
+        const user = await User.findOne({email:email,password:password})
+        if(user){
+            res.status(200).send({
+                error:false,
+                result:user,
+            })
+        }
+        else{
+            res.errorStatusCode=400
+            throw new Error('Email or Password incorrect !')
+        }
+    }
 
 }
