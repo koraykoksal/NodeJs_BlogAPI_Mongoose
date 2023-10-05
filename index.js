@@ -16,6 +16,18 @@ const PORT = process.env.PORT || 8000
 
 /* ------------------------------------------------------- */
 
+
+//! SessionCookies:
+// https://www.npmjs.com/package/cookie-session
+//* $ npm i cookie-session
+const session = require("cookie-session")
+
+app.use(session({
+    maxAge:5400000,//Milisaniye
+    secret:process.env.SECRET_KEY
+}))
+
+
 //! expresse json veri göndereceğim ve bu verileri obje olarak almak için express.json() çalıştırıyorum.
 app.use(express.json())
 
