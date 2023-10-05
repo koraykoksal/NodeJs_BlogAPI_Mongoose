@@ -29,6 +29,19 @@ const mongoose =require('mongoose')
 //     timestamps:true
 // })
 
+const blogCategorySchema = new mongoose.Schema({
+
+    name: {
+        type: String,
+        trim: true,
+        required: true
+    }
+
+}, {
+    collection: 'blogCategories',
+    timestamps: true
+})
+
 
 //* blog dataları için oluşturulan Schema
 const blogPostSchema = new mongoose.Schema({
@@ -60,5 +73,6 @@ const blogPostSchema = new mongoose.Schema({
 // }
 
 module.exports = {
+    BlogCategory: mongoose.model('BlogCategory', blogCategorySchema),
     BlogPost:mongoose.model('BlogPost',blogPostSchema)
 }
