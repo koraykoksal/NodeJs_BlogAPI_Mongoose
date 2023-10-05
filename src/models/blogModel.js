@@ -45,6 +45,16 @@ const blogCategorySchema = new mongoose.Schema({
 
 //* blog dataları için oluşturulan Schema
 const blogPostSchema = new mongoose.Schema({
+
+    //! blogSchema ile blogCategory bilgilerini eşleştirmek için yapılan işlem
+    blogCategoryId:{
+        type:mongoose.Schema.ObjectId,
+        required:true,
+        ref:"BlogCategory" // blogPost bilgilerinin nere bağlandığını gösterir (referance)
+    },
+
+    //------------------------------------------
+
     title:{
         type:String,
         trim:true,

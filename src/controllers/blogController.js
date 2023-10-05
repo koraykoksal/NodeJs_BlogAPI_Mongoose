@@ -9,7 +9,16 @@ const {BlogPost,BlogCategory} = require('../models/blogModel')
 module.exports.BlogPost={
 
     list:async(req,res)=>{
-        const data = await BlogPost.find()
+        //* populate bağlı olduğu kaydın verisini getiriyor.
+        const data = await BlogPost.find().populate("blogCategoryId")
+        res.status(200).send({
+            error:false,
+            result:data
+        })
+    },
+    listInCategory:async(req,res)=>{
+        //* populate bağlı olduğu kaydın verisini getiriyor.
+        const data = await BlogPost.find({blogCategoryId:req.params.categoryId}).populate("blogCategoryId")
         res.status(200).send({
             error:false,
             result:data
@@ -56,6 +65,7 @@ module.exports.BlogPost={
 module.exports.BlogCategory={
 
     list:async(req,res)=>{
+        
         const data = await BlogCategory.find()
         res.status(200).send({
             error:false,

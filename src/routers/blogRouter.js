@@ -19,6 +19,10 @@ router.route('/post/:postId')
 .delete(BlogPost.delete)
 
 
+router.get('/category/categoryId/post',BlogPost.listInCategory)
+
+
+
 // ------------------------------------------
 // BlogCategory
 // ------------------------------------------

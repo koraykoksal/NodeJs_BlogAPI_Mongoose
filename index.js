@@ -23,15 +23,16 @@ app.use(express.json())
 //? db connection bağlantısında middleware yazılmadığı için app.use kullanılmadı
 require('./src/dbConnection')
 
-
-// app.all('/', (req, res) => {
-//     res.send('WELCOME TO BLOG API')
-// })
+//! bu bir fonksiyon olduğundan dolayı fonksiyon mantığına göre parantez aç kapa yaparak çalıştırılabilir
+// senkronizasyon yapıldıktan sonra tekrar çalıştırmaya gerek yoktur
+// require('./src/sync')()
 
 //! Routers
 //? url adresine /blog ile bir istek atıldığında app.use çalıştır
 // app.use('/blog',require('./src/routers/blogRouter'))
+app.use(require('./src/routers/userRoute'))
 app.use(require('./src/routers/blogRouter'))
+
 
 
 //! errorHandler
