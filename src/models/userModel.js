@@ -21,6 +21,7 @@ const UserSchema=new mongoose.Schema({
         trim:true,
         unique:false,
         required:[true,"Password field must be required."],
+        set:(password) => password + '987'
     },
     firstName:String,
     lastName:String,
