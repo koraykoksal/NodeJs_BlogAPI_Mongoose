@@ -2,7 +2,7 @@
 
 
 const mongoose = require('mongoose')
-
+const passwordEncrypt = require('../helper/passwordEncrypt')
 
 const UserSchema=new mongoose.Schema({
 
@@ -21,7 +21,9 @@ const UserSchema=new mongoose.Schema({
         trim:true,
         unique:false,
         required:[true,"Password field must be required."],
-        set:(password) => password + '987'
+
+        //* kullanıcının parolası encrypt yapmak için kullanılır
+        set:(password) => passwordEncrypt(password)
     },
     firstName:String,
     lastName:String,

@@ -19,6 +19,6 @@ const encType = 'sha256'
 
 module.exports = function(password){
     
-    const encode = crypto.pbkdf2(password,keyCode,loopCount,charsCount,encType)
+    const encode = crypto.pbkdf2Sync(password,keyCode,loopCount,charsCount,encType)
     return encode.toString('hex')
 }
